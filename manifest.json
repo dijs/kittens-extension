@@ -1,0 +1,17 @@
+{
+  "manifest_version": 2,
+  "name": "Kittens Extension",
+  "version": "0.1",
+  "content_scripts": [
+    {
+      "matches": ["http://bloodrizer.ru/*"],
+      "js": ["content.js"]
+    }
+  ],
+  "permissions": ["activeTab"],
+  "web_accessible_resources": ["script.js"],
+  "browser_action": {
+    "default_popup": "popup.html",
+    "default_title": "Kittens"
+  }
+}
