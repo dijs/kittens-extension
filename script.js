@@ -151,21 +151,51 @@ function tryAutocraft(name, res) {
   }
 }
 
+function clickButton(text) {
+  const button = [...document.querySelectorAll('.btn:not(.disabled)')].find(
+    btn => btn.innerText.indexOf(text) === 0
+  );
+  if (button) button.click();
+}
+
+function tradeAll(name) {
+  const race = game.diplomacy.races.find(race => race.name === name);
+  if (game.diplomacy.getMaxTradeAmt(race) !== undefined) {
+    game.diplomacy.tradeAll(race);
+  }
+}
+
 function checks() {
   sendHunters();
-  tradeCatnipForWood();
+  // tradeCatnipForWood();
   observeSky();
 
-  // craftAll('parchment').withThreshold(false);
-  // craftAll('beam').withThreshold('wood', 20000);
-  tryAutocraft('parchment', 'furs');
-  tryAutocraft('beam', 'wood');
+  // clickButton('Smelter');
+  // clickButton('Workshop');
+  // clickButton('Observatory');
+  // clickButton('Library');
+  // clickButton('Lumber Mill');
+  // clickButton('Academy');
+  // clickButton('Log House');
+  clickButton('Hut');
 
-  craftAll('scaffold').withThreshold('beam', 1000);
-  // craftAll('plate').withThreshold('iron', 5000);
-  craftAll('steel').withThreshold('coal', 1000);
-  // craftAll('slab').withThreshold('minerals', 25000);
-  craftAll('manuscript').withThreshold('culture', 2000);
+  // craftAll('compendium').withThreshold(false);
+  // craftAll('blueprint').withThreshold(false);
+  // craftAll('parchment').withThreshold(false);
+  craftAll('beam').withThreshold(false);
+  // tryAutocraft('parchment', 'furs');
+  // tryAutocraft('beam', 'wood');
+
+  // craftAll('scaffold').withThreshold('beam', 1000);
+  craftAll('steel').withThreshold(false);
+  // craftAll('alloy').withThreshold(false);
+  // craftAll('slab').withThreshold('minerals', 10000);
+  // craftAll('concrete').withThreshold(false);
+  // craftAll('manuscript').withThreshold('culture', 2000);
+  craftAll('plate').withThreshold(false);
+
+  // tradeAll('dragons');
+
   catnipLowAlert();
   populationAlert();
 }
